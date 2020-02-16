@@ -74,4 +74,76 @@
         Finished dev [unoptimized + debuginfo] target(s) in 0.01s
          Running `target/debug/hello_cargo`
     Hello, world!
+    [2020-02-16 15:03:28]~/___/github/hi-rust/rust-lang_book/projects/hello_cargo(master)$ cargo build --release
+       Compiling hello_cargo v0.1.0 (/home/yuanyu/___/github/hi-rust/rust-lang_book/projects/hello_cargo)
+        Finished release [optimized] target(s) in 0.20s
+    [2020-02-16 15:03:34]~/___/github/hi-rust/rust-lang_book/projects/hello_cargo(master)$ tree -a
+    .
+    ├── Cargo.lock
+    ├── Cargo.toml
+    ├── src
+    │   └── main.rs
+    └── target
+        ├── debug
+        │   ├── build
+        │   ├── .cargo-lock
+        │   ├── deps
+        │   │   ├── hello_cargo-9678e9919e0d829e.d
+        │   │   ├── hello_cargo-c9aa63d1aaa59939
+        │   │   ├── hello_cargo-c9aa63d1aaa59939.d
+        │   │   └── libhello_cargo-9678e9919e0d829e.rmeta
+        │   ├── examples
+        │   ├── .fingerprint
+        │   │   ├── hello_cargo-9678e9919e0d829e
+        │   │   │   ├── bin-hello_cargo-9678e9919e0d829e
+        │   │   │   ├── bin-hello_cargo-9678e9919e0d829e.json
+        │   │   │   ├── dep-bin-hello_cargo-9678e9919e0d829e
+        │   │   │   └── invoked.timestamp
+        │   │   └── hello_cargo-c9aa63d1aaa59939
+        │   │       ├── bin-hello_cargo-c9aa63d1aaa59939
+        │   │       ├── bin-hello_cargo-c9aa63d1aaa59939.json
+        │   │       ├── dep-bin-hello_cargo-c9aa63d1aaa59939
+        │   │       └── invoked.timestamp
+        │   ├── hello_cargo
+        │   ├── hello_cargo.d
+        │   └── incremental
+        │       ├── hello_cargo-2wrq5qu63srad
+        │       │   ├── s-fkqfr85nzd-16isfuk-30fgcmxv7utrq
+        │       │   │   ├── 1zpdfq6yalyo728v.o
+        │       │   │   ├── 29gab5x0y9sym3mi.o
+        │       │   │   ├── 3huoj5xnrtnapmun.o
+        │       │   │   ├── 4tf4uztoa0199ywx.o
+        │       │   │   ├── 59bdmswnhsf8o5rw.o
+        │       │   │   ├── 59o24b9pp4bvnnbf.o
+        │       │   │   ├── dep-graph.bin
+        │       │   │   ├── query-cache.bin
+        │       │   │   └── work-products.bin
+        │       │   └── s-fkqfr85nzd-16isfuk.lock
+        │       └── hello_cargo-h6qvq0hqv5ub
+        │           ├── s-fkqg4c7lrk-4bc642-185v93vvx7yqe
+        │           │   ├── dep-graph.bin
+        │           │   ├── query-cache.bin
+        │           │   └── work-products.bin
+        │           └── s-fkqg4c7lrk-4bc642.lock
+        ├── release
+        │   ├── build
+        │   ├── .cargo-lock
+        │   ├── deps
+        │   │   ├── hello_cargo-6dd518acfa0166f9
+        │   │   └── hello_cargo-6dd518acfa0166f9.d
+        │   ├── examples
+        │   ├── .fingerprint
+        │   │   └── hello_cargo-6dd518acfa0166f9
+        │   │       ├── bin-hello_cargo-6dd518acfa0166f9
+        │   │       ├── bin-hello_cargo-6dd518acfa0166f9.json
+        │   │       ├── dep-bin-hello_cargo-6dd518acfa0166f9
+        │   │       └── invoked.timestamp
+        │   ├── hello_cargo
+        │   ├── hello_cargo.d
+        │   └── incremental
+        └── .rustc_info.json
+    
+    21 directories, 42 files
+    [2020-02-16 15:06:52]~/___/github/hi-rust/rust-lang_book/projects/hello_cargo(master)$ ./target/release/hello_cargo 
+    Hello, world!
 
