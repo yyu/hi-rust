@@ -10,3 +10,5 @@ It is an official Rust project.
 > Rust style is to indent with four spaces
 
 > using a ! means that you’re calling a macro instead of a normal function
+
+> Cargo is Rust’s build system and package manager.
