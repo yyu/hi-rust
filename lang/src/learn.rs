@@ -14,6 +14,32 @@ mod tests {
     use super::__________2;
 
     #[test]
+    fn println_accepts_string() {
+        __________();
+        println!("{}", String::from("hello"));
+        __________2();
+    }
+
+    #[test]
+    fn println_accepts_string_ref() {
+        __________();
+        let s = String::from("hello");
+        println!("{}", &s);
+        println!("{}", &&s);
+        println!("{}", &&&s);
+        println!("{}", &&&&s);
+        __________2();
+    }
+
+    #[test]
+    fn println_accepts_str() {
+        __________();
+        let s = "hello";
+        println!("{}", s);
+        __________2();
+    }
+
+    #[test]
     fn string_literal_type() {
         __________();
         let s = "Hello";  // s type is &str
