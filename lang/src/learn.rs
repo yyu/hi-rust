@@ -7,11 +7,62 @@ pub fn __________2() {
     eprintln!("{}", ["="; 80].concat());
 }
 
+#[derive(Debug)]
+pub struct SmallNumber {
+    x: i32
+}
+
+pub fn add1(n: SmallNumber) -> SmallNumber {
+    SmallNumber {
+        x: n.x + 1
+    }
+}
+
+pub fn add1ref(n: &SmallNumber) -> SmallNumber {
+    SmallNumber {
+        x: n.x + 1
+    }
+}
 
 #[cfg(test)]
 mod tests {
     use super::__________;
     use super::__________2;
+    use super::SmallNumber;
+    use super::add1;
+    use super::add1ref;
+
+    #[test]
+    fn add1ref_accepts_ref() {
+        let n = SmallNumber { x: 1 };
+        let n_plus1 = add1ref(&n);
+
+        // add1ref accepts ref, not value
+        // |         let n_plus1 = add1ref(n);
+        // |                               ^
+        // |                               |
+        // |                               expected `&SmallNumber`, found struct `SmallNumber`
+        // |                               help: consider borrowing here: `&n`
+
+        assert_eq!(n_plus1.x, 2);
+        assert_eq!(add1ref(&n_plus1).x, 3);
+    }
+
+    #[test]
+    fn add1_accepts_value() {
+        let n = SmallNumber { x: 1 };
+        let n_plus1 = add1(n);
+
+        // add1 accepts value, not ref
+        // |         let n_plus1 = add1(&n);
+        // |                            ^^
+        // |                            |
+        // |                            expected struct `SmallNumber`, found `&SmallNumber`
+        // |                            help: consider removing the borrow: `n`
+
+        assert_eq!(n_plus1.x, 2);
+        assert_eq!(add1(n_plus1).x, 3);
+    }
 
     #[test]
     fn println_accepts_string() {
