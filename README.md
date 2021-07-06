@@ -12,3 +12,8 @@ It is an official Rust project.
 > using a ! means that you’re calling a macro instead of a normal function
 
 > Cargo is Rust’s build system and package manager.
+
+> Several rules determine what a package can contain.
+> * A package must contain zero or one library crates, and no more.
+> * It can contain as many binary crates as you’d like, but
+> * it must contain at least one crate (either library or binary).
