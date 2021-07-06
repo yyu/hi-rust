@@ -40,3 +40,9 @@ It is an official Rust project.
 > On the other hand, when bringing in structs, enums, and other items with `use`, it’s idiomatic to specify the full path.
 >
 > There’s no strong reason behind this idiom: it’s just the convention that has emerged, and folks have gotten used to reading and writing Rust code this way.
+
+`pub use`
+
+> Re-exporting is useful when the internal structure of your code is different from how programmers calling your code would think about the domain. For example, in this restaurant metaphor, the people running the restaurant think about “front of house” and “back of house.” But customers visiting a restaurant probably won’t think about the parts of the restaurant in those terms. With `pub use`, we can write our code with one structure but expose a different structure. Doing so makes our library well organized for programmers working on the library and programmers calling the library.
+
+
