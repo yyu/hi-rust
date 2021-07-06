@@ -23,3 +23,12 @@ It is an official Rust project.
 > The way privacy works in Rust is that all items (functions, methods, structs, enums, modules, and constants) are private by default.
 > * Items in a parent module can’t use the private items inside child modules, but
 > * items in child modules can use the items in their ancestor modules.
+
+`pub`: `struct` vs `enum`
+
+> If we use `pub` before a struct definition, we make the struct public, but the struct’s fields will still be private. We can make each field public or not on a case-by-case basis.
+>
+> In contrast, if we make an enum public, all of its variants are then public.
+>
+> * Enums aren’t very useful unless their variants are public; it would be annoying to have to annotate all enum variants with `pub` in every case, so the default for enum variants is to be public.
+> * Structs are often useful without their fields being public, so struct fields follow the general rule of everything being private by default unless annotated with `pub`.
