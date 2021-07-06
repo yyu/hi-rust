@@ -32,3 +32,11 @@ It is an official Rust project.
 >
 > * Enums aren’t very useful unless their variants are public; it would be annoying to have to annotate all enum variants with `pub` in every case, so the default for enum variants is to be public.
 > * Structs are often useful without their fields being public, so struct fields follow the general rule of everything being private by default unless annotated with `pub`.
+
+`use`: function vs `struct`/`enum`
+
+> Bringing the function’s parent module into scope with use so we have to specify the parent module when calling the function makes it clear that the function isn’t locally defined while still minimizing repetition of the full path.
+>
+> On the other hand, when bringing in structs, enums, and other items with `use`, it’s idiomatic to specify the full path.
+>
+> There’s no strong reason behind this idiom: it’s just the convention that has emerged, and folks have gotten used to reading and writing Rust code this way.
