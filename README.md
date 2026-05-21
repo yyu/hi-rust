@@ -7,6 +7,8 @@ It is an official Rust project.
 
 ## reading ![The Rust Programming Language](https://learning.oreilly.com/library/cover/9781098122539/)
 
+Interactive learning: https://rust-book.cs.brown.edu/
+
 > Rust style is to indent with four spaces
 
 > using a ! means that you’re calling a macro instead of a normal function
