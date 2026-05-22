@@ -25,6 +25,7 @@ Terminology
   * a crate is a collection of Rust source code files
   * binary crate: an executable
   * library crate: contains code that is intended to be used in other programs and can't be executed on its own
+  * You won’t just know which traits to use and which methods and functions to call from a crate, so each crate has documentation
 * *Semantic Versioning*, *SemVer*
   * a standard for writing version numbers
   * https://semver.org/
@@ -56,6 +57,8 @@ cargo:
   * `cargo check`
 * build with optimizations
   * `cargo release`
+* build documentation provided by all dependencies locally and open it in browser
+  * `cargo doc --open`
 
 *Cargo.lock* file
 * created on the first run of `cargo build`
