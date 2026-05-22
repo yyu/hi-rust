@@ -32,6 +32,11 @@ Terminology
 * *shadow*
   * *shadowing* lets us reuse a variable name
   * often used when converting a value from one type to another
+  * we can perform a few transformations on a value but have the variable be immutable after those transformations have completed
+      ```
+      let x = 3;
+      let x = x + 2;
+      ```
 
 `rustup`:
 * update to a newly released version
