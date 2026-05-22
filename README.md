@@ -9,6 +9,14 @@ It is an official Rust project.
 
 Interactive learning: https://rust-book.cs.brown.edu/
 
+`rustup`:
+* update to a newly released version
+  * `rustup update`
+* uninstall Rust and `rustup`
+  * `rustup self uninstall`
+* open the local doc in browser
+  * `rustup doc`
+
 > Rust style is to indent with four spaces
 
 > using a ! means that you’re calling a macro instead of a normal function
@@ -26,6 +34,8 @@ cargo:
   * `cargo run`
 * build a project without producing a binary
   * `cargo check`
+* build with optimizations
+  * `cargo release`
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
