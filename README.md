@@ -17,6 +17,10 @@ Terminology
   * a function that's implemented on a type
   * example: `String::new()`
     * `::` indicates `new` is an associated function of the `String` type
+* *enumeration*, *enum*, *variant*
+  * *enumeration*, aka *enum*, is a type that can be in one of multiple possible states
+  * each possible state is called a *variant*
+  * `Result`'s variants are `Ok` and `Err`
 
 `rustup`:
 * update to a newly released version
