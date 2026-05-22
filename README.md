@@ -21,6 +21,10 @@ Terminology
   * *enumeration*, aka *enum*, is a type that can be in one of multiple possible states
   * each possible state is called a *variant*
   * `Result`'s variants are `Ok` and `Err`
+* *crate*
+  * a crate is a collection of Rust source code files
+  * binary crate: an executable
+  * library crate: contains code that is intended to be used in other programs and can't be executed on its own
 
 `rustup`:
 * update to a newly released version
