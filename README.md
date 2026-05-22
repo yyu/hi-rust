@@ -37,6 +37,25 @@ Terminology
       let x = 3;
       let x = x + 2;
       ```
+* *scalar* type
+  * represents a single value
+  * Rust has 4 primary scalar types:
+    * integers
+      * `i8`, `i16`, `i32`, `i64`, `i128`, `isize`
+      * `u8`, `u16`, `u32`, `u64`, `u128`, `usize`
+      * integer types default to `i32`
+      * the primary situation in which you'd use `isize` or `usize` is when indexing some sort of collection
+      * examples: `98_222`, `0xff`, `0o77`, `0b1111_0000`, `b'A'`, `57u8`
+    * floating-point numbers
+      * `f32`, `f64`
+      * default type if `f64`
+    * Booleans
+      * `bool`
+      * one byte in size
+    * characters
+      * `char`
+      * specify `char` literals with single quotation marks, as opposed to string literals, which use double quotation marks
+      * 4 bytes in size and represents a Unicode scalar value
 
 `rustup`:
 * update to a newly released version
