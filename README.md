@@ -17,6 +17,16 @@ Interactive learning: https://rust-book.cs.brown.edu/
 
 > In Rust, packages of code are referred to as crates.
 
+cargo:
+* create a project
+  * `cargo new`
+* build a project
+  * `cargo build`
+* build and run a project
+  * `cargo run`
+* build a project without producing a binary
+  * `cargo check`
+
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
 > * It can contain as many binary crates as you’d like, but
