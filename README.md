@@ -9,6 +9,15 @@ It is an official Rust project.
 
 Interactive learning: https://rust-book.cs.brown.edu/
 
+Terminology
+* *prelude*
+  * By default, Rust has a set of items defined in the standard library that it brings into the scope of every program. This set is called the prelude.
+  * If a type you want to use isn’t in the prelude, you have to bring that type into scope explicitly with a use statement.
+* *associated function*
+  * a function that's implemented on a type
+  * example: `String::new()`
+    * `::` indicates `new` is an associated function of the `String` type
+
 `rustup`:
 * update to a newly released version
   * `rustup update`
