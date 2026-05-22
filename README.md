@@ -15,6 +15,8 @@ Interactive learning: https://rust-book.cs.brown.edu/
 
 > Cargo is Rust’s build system and package manager.
 
+> In Rust, packages of code are referred to as crates.
+
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
 > * It can contain as many binary crates as you’d like, but
