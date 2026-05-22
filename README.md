@@ -57,6 +57,12 @@ cargo:
 * build with optimizations
   * `cargo release`
 
+*Cargo.lock* file
+* created on the first run of `cargo build`
+* following builds will use versions from Cargo.lock file
+* often checked into source control because it's important for reproducible builds
+* `cargo update` will ignore the Cargo.lock file and figure out all the latest versions that fit the specifications in Cargo.toml
+
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
 > * It can contain as many binary crates as you’d like, but
