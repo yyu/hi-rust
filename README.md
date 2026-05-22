@@ -78,6 +78,12 @@ pattern matching
 numbers
   * Unless otherwise specified, Rust defaults to an `i32`
 
+*immutable variables* vs *constants*
+* `mut` is not allowed to be used with constants
+* the type of constants must be annotated
+* constants can be declared in any scope, including the global scope
+* constants may be set only to a constant expression, not the result of a value that could only be computed at runtime
+
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
 > * It can contain as many binary crates as you’d like, but
