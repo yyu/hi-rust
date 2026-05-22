@@ -83,6 +83,8 @@ numbers
 * the type of constants must be annotated
 * constants can be declared in any scope, including the global scope
 * constants may be set only to a constant expression, not the result of a value that could only be computed at runtime
+* Rust’s naming convention for constants is to use all uppercase with underscores between words
+* Constants arer valid for the entire time a program runs, within the scope in which they were declared
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
