@@ -29,6 +29,9 @@ Terminology
 * *Semantic Versioning*, *SemVer*
   * a standard for writing version numbers
   * https://semver.org/
+* *shadow*
+  * *shadowing* lets us reuse a variable name
+  * often used when converting a value from one type to another
 
 `rustup`:
 * update to a newly released version
@@ -65,6 +68,15 @@ cargo:
 * following builds will use versions from Cargo.lock file
 * often checked into source control because it's important for reproducible builds
 * `cargo update` will ignore the Cargo.lock file and figure out all the latest versions that fit the specifications in Cargo.toml
+
+pattern matching
+  * a `match` expression is made up of `arms`
+  * an `arm` consits of a `pattern` to match against, and the code that should be run if the value given to match fits that arm's pattern
+  * Rust takes the value given to match and looks through each arm’s pattern in turn
+  * the match expression ends after the first successful match
+
+numbers
+  * Unless otherwise specified, Rust defaults to an `i32`
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
