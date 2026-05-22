@@ -25,6 +25,9 @@ Terminology
   * a crate is a collection of Rust source code files
   * binary crate: an executable
   * library crate: contains code that is intended to be used in other programs and can't be executed on its own
+* *Semantic Versioning*, *SemVer*
+  * a standard for writing version numbers
+  * https://semver.org/
 
 `rustup`:
 * update to a newly released version
