@@ -130,9 +130,6 @@ pattern matching
   * Rust takes the value given to match and looks through each arm’s pattern in turn
   * the match expression ends after the first successful match
 
-numbers
-  * Unless otherwise specified, Rust defaults to an `i32`
-
 *immutable variables* vs *constants*
 * `mut` is not allowed to be used with constants
 * the type of constants must be annotated
@@ -140,6 +137,16 @@ numbers
 * constants may be set only to a constant expression, not the result of a value that could only be computed at runtime
 * Rust’s naming convention for constants is to use all uppercase with underscores between words
 * Constants arer valid for the entire time a program runs, within the scope in which they were declared
+
+functions
+* Rust code uses snake case as the conventional style for function and variable names
+* Rust doesn’t care where you define your functions, only that they’re defined somewhere in a scope that can be seen by the caller
+  * callee can be defined after the caller
+* *parameters* vs *arguments*
+  * *parameters* are special variables that are part of a function's signature
+  * *arguments* are concrete values for those parameters
+
+> Rust is an expression-based language
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
