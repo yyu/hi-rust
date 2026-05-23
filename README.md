@@ -174,6 +174,12 @@ functions
 
 > Even in situations in which you want to run some code a certain number of times, most Rustaceans would use a for loop. The way to do that would be to use a Range
 
+> A foundational goal of Rust is to ensure that your programs never have undefined behavior. That is the meaning of “safety.”
+
+> A secondary goal of Rust is to prevent undefined behavior at compile-time instead of run-time.
+
+> Variables live in frames. A frame is a mapping from variables to values within a single scope, such as a function.
+
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
 > * It can contain as many binary crates as you’d like, but
