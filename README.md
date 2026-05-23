@@ -92,6 +92,7 @@ Terminology
     * `let y = 6;` is a statement.
   * Expressions evaluate to a resultant value.
     * calling a macro is an expression
+    * `if` is an expression
     * a new scope block created with curly brackets is an expression
       * ```
         {
@@ -100,6 +101,10 @@ Terminology
         }
         ```
   * Expressions do not include ending semicolons. If you add a semicolon to the end of an expression, you turn it into a statement, and it will then not return a value
+* *arms* (in `if` expressions)
+  * Blocks of code associated with the conditions in if expressions are sometimes called arms
+* loop labels
+  * you can optionally specify a loop label on a loop that you can then use with `break` or `continue` to specify that those keywords apply to th elabeled loop instead of the innermost loop
 
 `rustup`:
 * update to a newly released version
@@ -162,6 +167,12 @@ functions
 * function definitions are statements; calling a function is an expression, not a statement
 
 > Rust is an expression-based language
+
+> Rust has three kinds of loops: `loop`, `while`, and `for`.
+
+> Rust compiler treats a `break` expression and a `return` expression as having the value unit, or `()`.
+
+> Even in situations in which you want to run some code a certain number of times, most Rustaceans would use a for loop. The way to do that would be to use a Range
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
