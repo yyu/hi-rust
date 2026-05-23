@@ -56,7 +56,7 @@ Terminology
       * `char`
       * specify `char` literals with single quotation marks, as opposed to string literals, which use double quotation marks
       * 4 bytes in size and represents a Unicode scalar value
-* *compound` type
+* *compound* type
   * *tuples*
     * fixed length: once declared, they cannot grow or shrink in size
     * To get the individual values out of a tuple, we can use pattern matching to destructure a tuple value. See *destructuring* below
@@ -78,8 +78,10 @@ Terminology
       * This check has to happen at runtime.
     * examples:
       * `let a = [1, 2, 3, 4, 5];`
-      * `let a: [i32; 5] = [1, 2, 3, 4, 5];` -- `i32` is the type of each element; the number `5` indicates the array contains five elements
-      * `let a = [3; 5];` -- `5` elements that will all be set to the value `3` initially
+      * `let a: [i32; 5] = [1, 2, 3, 4, 5];`
+        * `i32` is the type of each element; the number `5` indicates the array contains five elements
+      * `let a = [3; 5];`
+        * `5` elements that will all be set to the value `3` initially
 * *destructuring*
   * ```
     let tup = (500, 6.4, 1);
