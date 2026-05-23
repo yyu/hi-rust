@@ -87,6 +87,18 @@ Terminology
     let tup = (500, 6.4, 1);
     let (x, y, z) = tup; // use a pattern with let to take tup and turn it into three separate variables
     ```
+* *statements* vs *expressions*
+  * Statements are instructions that perform some action and do not return a value.
+    * `let y = 6;` is a statement.
+  * Expressions evaluate to a resultant value.
+    * calling a macro is an expression
+    * a new scope block created with curly brackets is an expression
+      * ```
+        {
+          let x = 3;
+          x + 1
+        }
+        ```
 
 `rustup`:
 * update to a newly released version
@@ -145,6 +157,8 @@ functions
 * *parameters* vs *arguments*
   * *parameters* are special variables that are part of a function's signature
   * *arguments* are concrete values for those parameters
+* function bodies are made up of a series of statements optionally ending in an expression
+* function definitions are statements; calling a function is an expression, not a statement
 
 > Rust is an expression-based language
 
