@@ -105,6 +105,16 @@ Terminology
   * Blocks of code associated with the conditions in if expressions are sometimes called arms
 * loop labels
   * you can optionally specify a loop label on a loop that you can then use with `break` or `continue` to specify that those keywords apply to th elabeled loop instead of the innermost loop
+* *frames*
+  * Variables live in frames.
+  * A frame is a mapping from variables to values within a single scope, such as a function.
+  * Frames are organized into a stack of currently-called-functions.
+  * After a function returns, Rust deallocates the function’s frame. (Deallocation is also called *freeing* or *dropping*.)
+* *Box*
+  * Rust provides a construct called Box for putting data on the heap.
+  * example: `let a = Box::new([0; 1000000]);`
+  * Box deallocation principle: If a variable owns a box, when Rust deallocates the variable’s frame, then Rust deallocates the box’s heap memory.
+  * Moved heap data principle: if a variable x moves ownership of heap data to another variable y, then x cannot be used after the move.
 
 `rustup`:
 * update to a newly released version
@@ -178,7 +188,7 @@ functions
 
 > A secondary goal of Rust is to prevent undefined behavior at compile-time instead of run-time.
 
-> Variables live in frames. A frame is a mapping from variables to values within a single scope, such as a function.
+> Rust Does Not Permit Manual Memory Management
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
