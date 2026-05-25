@@ -190,6 +190,10 @@ functions
 
 > Rust Does Not Permit Manual Memory Management
 
+> References are non-owning pointers
+
+> Pointer Safety Principle: data should never be aliased and mutated at the same time.
+
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
 > * It can contain as many binary crates as you’d like, but
