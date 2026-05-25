@@ -192,7 +192,13 @@ functions
 
 > References are non-owning pointers
 
-> Pointer Safety Principle: data should never be aliased and mutated at the same time.
+> *Pointer Safety Principle*: data should never be aliased and mutated at the same time.
+
+borrow checker
+* The core idea behind the borrow checker is that variables have three kinds of permissions on their data:
+  * **Read**(**R**): data can be copied to another location
+  * **Write**(**W**): data can be mutated
+  * **Own**(**O**): data can be moved or dropped
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
