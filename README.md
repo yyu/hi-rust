@@ -205,6 +205,7 @@ borrow checker
   * a place is anything you can put on the left-hand side of an assignment
     * e.g., `a`, `*a`, `a[0]`, `a.0`, `a.field`, `*((*a)[0].1)`
 * Permissions Are Returned At The End of a Reference’s Lifetime
+* data must outlive any references to it
 * These permissions don’t exist at runtime, only within the compiler.
 
 > Several rules determine what a package can contain.
