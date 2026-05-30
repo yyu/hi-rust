@@ -194,7 +194,7 @@ functions
 
 > *Pointer Safety Principle*: data should never be aliased and mutated at the same time.
 
-borrow checker
+ownership, borrow checker
 * The core idea behind the borrow checker is that variables have three kinds of permissions on their data:
   * **Read**(**R**): data can be copied to another location
   * **Write**(**W**): data can be mutated
@@ -207,6 +207,10 @@ borrow checker
 * Permissions Are Returned At The End of a Reference’s Lifetime
 * data must outlive any references to it
 * These permissions don’t exist at runtime, only within the compiler.
+* functions should not mutate their inputs if the caller would not expect it
+* it is very rare for rust functions to take ownership of heap-owning data structures like `Vec` and `String`
+* In general, writing Rust functions is a careful balance of asking for the *right* level of permissions
+* Rust doesn’t look at the implementation of `get_first` when deciding what `get_first(&name)` should borrow. Rust only looks at the type signature, which just says “some String in the input gets borrowed”.
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
