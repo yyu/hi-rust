@@ -199,6 +199,13 @@ borrow checker
   * **Read**(**R**): data can be copied to another location
   * **Write**(**W**): data can be mutated
   * **Own**(**O**): data can be moved or dropped
+* By default, a variable has read/own permissions (**RO**) on its data. If a variable is annotated with let mut, then it also has the write permission (**W**).
+  * The key idea is that **references can temporarily remove these permissions**.
+* permissions are defined on **places** and not just variables
+  * a place is anything you can put on the left-hand side of an assignment
+    * e.g., `a`, `\*a`, `a[0]`, `a.0`, `a.field`, `*((*a)[0].1)`
+* Permissions Are Returned At The End of a Reference’s Lifetime
+* These permissions don’t exist at runtime, only within the compiler.
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
