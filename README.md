@@ -115,6 +115,10 @@ Terminology
   * example: `let a = Box::new([0; 1000000]);`
   * Box deallocation principle: If a variable owns a box, when Rust deallocates the variable’s frame, then Rust deallocates the box’s heap memory.
   * Moved heap data principle: if a variable x moves ownership of heap data to another variable y, then x cannot be used after the move.
+* *slice*
+  * Slices let you reference a contiguous sequence of elements in a *collection*
+  * A string slice is a reference to part of a String
+    * String Literals Are Slices
 
 `rustup`:
 * update to a newly released version
