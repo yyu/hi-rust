@@ -119,6 +119,27 @@ Terminology
   * Slices let you reference a contiguous sequence of elements in a *collection*
   * A string slice is a reference to part of a String
     * String Literals Are Slices
+* *struct*
+  * *fields* -- names and types of the pieces of data
+  * when creating an *instance*, We don’t have to specify the fields in the same order in which we declared them in the struct
+  * Rust doesn’t allow us to mark only certain fields as mutable
+  * *field init shorthand* -- when parameter names and the struct field names are exactly the same
+    * ```
+      User {
+        active: true,
+        username,  // field init shorthand
+        email,     // field init shorthand
+        sign_in_count: 1,
+      }
+      ```
+  * *struct update syntax*
+    * ```
+      let user2 = User {
+        email: String::from("another@example.com"),
+        ..user1
+      }
+      ```
+      * it moves the data
 
 `rustup`:
 * update to a newly released version
