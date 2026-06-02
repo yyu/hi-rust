@@ -149,7 +149,7 @@ Terminology
         width: u32,
         height: u32,
     }
-    `
+    ```
     * `{:?}`
       * ```
         Rectangle { width: 30, height: 50 }
