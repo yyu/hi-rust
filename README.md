@@ -142,6 +142,25 @@ Terminology
       * it moves the data
       * after creating `user2`, `user1` is partially invalidated because the String in the username field of `user1` was moved into `user2`
       * If we had given `user2` new String values for both email and username, and thus only used the active and sign_in_count values from `user1`, then `user1` would still be fully valid after creating `user2`.
+  * Rust’s borrow checker will track ownership permissions at both the struct-level and field-level
+  * ```
+    #[derive(Debug)]
+    struct Rectangle {
+        width: u32,
+        height: u32,
+    }
+    `
+    * `{:?}`
+      * ```
+        Rectangle { width: 30, height: 50 }
+        ```
+    * `{:#?}`
+      * ```
+        Rectangle {
+            width: 30,
+            height: 50,
+        }
+        ```
 * *tuple structs*
   * give the whole tuple a name
   * make the tuple a different type from other tuples
