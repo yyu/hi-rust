@@ -161,6 +161,19 @@ Terminology
             height: 50,
         }
         ```
+  * `&self` is actually short for `self: &Self`
+    * Within an `impl` block, the type `Self` is an alias for the type that the `impl` block is for
+  * Note that we can choose to give a method the same name as one of the struct’s fields
+  * *associated functions*
+    * All functions defined within an impl block are called *associated functions*
+  * `new` isn’t a special name and isn’t built into the language
+  * Each struct is allowed to have multiple `impl` blocks
+  * Method Calls are Syntactic Sugar for Function Calls
+  * Rust does not have an equivalent to the arrow `operator ->` like C++
+    * Rust will automatically reference and dereference the method receiver when you use the dot operator
+    * Rust will insert as many references and dereferences as needed to make the types match up for the self parameter
+  * remember: when you see an error like “cannot move out of *self”, that’s usually because you’re trying to call a self method on a reference like `&self` or `&mut self`
+    * Rust is protecting you from a double-free.
 * *tuple structs*
   * give the whole tuple a name
   * make the tuple a different type from other tuples
