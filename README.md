@@ -188,6 +188,19 @@ Terminology
       ...
       let subject = AlwaysEqual;
       ```
+* *enum*
+  * The name of each enum variant that we define also becomes a function that constructs an instance of the enum.
+  * you can put any kind of data inside an enum variant: strings, numeric types, or structs. You can even include another enum!
+  * example
+    * ```
+      enum Message {
+          Quit,
+          Move { x: i32, y: i32 },
+          Write(String),
+          ChangeColor(i32, i32, i32),
+      }
+      ```
+  * Just as we’re able to define methods on structs using impl, we’re also able to define methods on enums
 
 `rustup`:
 * update to a newly released version
@@ -202,6 +215,10 @@ Terminology
 > using a ! means that you’re calling a macro instead of a normal function
 
 > Cargo is Rust’s build system and package manager.
+
+> Programming language design is often thought of in terms of which features you include, but the features you exclude are important too
+
+> The `Option<T>` enum is so useful that it’s even included in the prelude ... Its variants are also included in the prelude: You can use `Some` and `None` directly without the `Option::` prefix
 
 > In Rust, packages of code are referred to as crates.
 
@@ -230,6 +247,9 @@ pattern matching
   * an `arm` consits of a `pattern` to match against, and the code that should be run if the value given to match fits that arm's pattern
   * Rust takes the value given to match and looks through each arm’s pattern in turn
   * the match expression ends after the first successful match
+  * The code associated with each arm is an expression
+  * the resultant value of the expression in the matching arm is the value that gets returned for the entire match expression.
+  * `_` is a special pattern that matches any value and does not bind to that value
 
 *immutable variables* vs *constants*
 * `mut` is not allowed to be used with constants
@@ -284,6 +304,8 @@ ownership, borrow checker
 * it is very rare for rust functions to take ownership of heap-owning data structures like `Vec` and `String`
 * In general, writing Rust functions is a careful balance of asking for the *right* level of permissions
 * Rust doesn’t look at the implementation of `get_first` when deciding what `get_first(&name)` should borrow. Rust only looks at the type signature, which just says “some String in the input gets borrowed”.
+
+> standard library types are often not much more complicated than what you might come up with.
 
 > Several rules determine what a package can contain.
 > * A package must contain zero or one library crates, and no more.
