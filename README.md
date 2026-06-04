@@ -250,6 +250,7 @@ pattern matching
   * The code associated with each arm is an expression
   * the resultant value of the expression in the matching arm is the value that gets returned for the entire match expression.
   * `_` is a special pattern that matches any value and does not bind to that value
+  * you can think of `if let` as syntax sugar for a match that runs code when the value matches one pattern and then ignores all other values
 
 *immutable variables* vs *constants*
 * `mut` is not allowed to be used with constants
