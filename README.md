@@ -26,6 +26,18 @@ Terminology
   * binary crate: an executable
   * library crate: contains code that is intended to be used in other programs and can't be executed on its own
   * You won’t just know which traits to use and which methods and functions to call from a crate, so each crate has documentation
+  * a *crate* is the smallest amount of code that the Rust compiler considers at a time
+  * *crate root*
+    * A *crate root* is a source file that the Rust compiler starts from and makes up the root module of your crate
+* *package*
+  * a *package* is a bundle of one or more crates that provides a set of functionality
+  * a *package* contains a `Cargo.toml` file that describes how to build those crates.
+  * Several rules determine what a package can contain.
+    * A package must contain zero or one library crates, and no more.
+    * It can contain as many binary crates as you’d like, but
+    * it must contain at least one crate (either library or binary).
+    * ![](img/rustpackage.png)
+
 * *Semantic Versioning*, *SemVer*
   * a standard for writing version numbers
   * https://semver.org/
@@ -307,11 +319,6 @@ ownership, borrow checker
 * Rust doesn’t look at the implementation of `get_first` when deciding what `get_first(&name)` should borrow. Rust only looks at the type signature, which just says “some String in the input gets borrowed”.
 
 > standard library types are often not much more complicated than what you might come up with.
-
-> Several rules determine what a package can contain.
-> * A package must contain zero or one library crates, and no more.
-> * It can contain as many binary crates as you’d like, but
-> * it must contain at least one crate (either library or binary).
 
 > Modules aren’t useful only for organizing your code. They also define Rust’s *privacy boundary*: the line that encapsulates the implementation details external code isn’t allowed to know about, call, or rely on. So, if you want to make an item like a function or struct private, you put it in a module.
 >
