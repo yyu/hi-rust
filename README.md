@@ -36,7 +36,22 @@ Terminology
     * A package must contain zero or one library crates, and no more.
     * It can contain as many binary crates as you’d like, but
     * it must contain at least one crate (either library or binary).
-    * ![](img/rustpackage.png)
+  * ![](img/rustpackage.png)
+* *module*
+  * code within a module is private by default
+  * We define a module with the `mod` keyword followed by the name of the module
+  * Inside modules, we can place other modules
+  * Modules can also hold definitions for other items, such as structs, enums, constants, traits, and functions
+  * *paths* for referring to an item in the module tree
+    * an *absolute path* is the full path starting from a crate root
+      * for code from an external crate, the absolute path begins with the crate name
+      * for code from the current crate, it starts with th eliteral `crate`
+    * a *relative path* starts from the current module and uses `self`, `super`, or an identifier in the current module
+  * In Rust, all items (functions, methods, structs, enums, modules, and constants) are private to parent modules by default.
+  * Items in a parent module can’t use the private items inside child modules, but items in child modules can use the items in their ancestor modules.
+  * if X isn’t public but Y function is defined in the same module as X (that is, Y and X are siblings), we can refer to X from Y
+  * If we use `pub` before a struct definition, we make the struct public, but the struct’s fields will still be private
+  * if we make an enum public, all of its variants are then public
 
 * *Semantic Versioning*, *SemVer*
   * a standard for writing version numbers
@@ -237,6 +252,7 @@ Terminology
 cargo:
 * create a project
   * `cargo new`
+  * `cargo new --lib`
 * build a project
   * `cargo build`
 * build and run a project
