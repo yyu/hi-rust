@@ -55,6 +55,17 @@ Terminology
   * you only need to load a file using a `mod` declaration *once* in your module tree
     * Once the compiler knows the file is part of the project, other files in your project should refer to the loaded file’s code using a path to where it was declared
     * `mod` is not an “include” operation that you may have seen in other programming languages
+  * convention
+    * Bringing the function’s parent module into scope with `use`
+    * when bringing in structs, enums, and other items with use, it’s idiomatic to specify the full path
+  * *re-exporting*
+    * To enable code outside that scope to refer to that name as if it had been defined in that scope, we can combine `pub` and `use`
+  * the standard `std` library
+    * the standard `std` library is also a crate that’s external to our package
+    * Because the standard library is shipped with the Rust language, we don’t need to change Cargo.toml to include `std`
+    * we do need to refer to it with `use` to bring items from there into our package’s scope. e.g., `use std::collections::HashMap;`
+  * glob operator
+    *  we want to bring all public items defined in a path into scope, we can specify that path followed by the `*` glob operator. e.g., `use std::collections::*;`
 
 * *Semantic Versioning*, *SemVer*
   * a standard for writing version numbers
