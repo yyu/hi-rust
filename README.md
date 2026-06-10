@@ -52,6 +52,9 @@ Terminology
   * if X isn’t public but Y function is defined in the same module as X (that is, Y and X are siblings), we can refer to X from Y
   * If we use `pub` before a struct definition, we make the struct public, but the struct’s fields will still be private
   * if we make an enum public, all of its variants are then public
+  * you only need to load a file using a `mod` declaration *once* in your module tree
+    * Once the compiler knows the file is part of the project, other files in your project should refer to the loaded file’s code using a path to where it was declared
+    * `mod` is not an “include” operation that you may have seen in other programming languages
 
 * *Semantic Versioning*, *SemVer*
   * a standard for writing version numbers
