@@ -13,11 +13,13 @@ crate
          └── take_payment
 
 */
-mod front_of_house;
+pub mod hosting;
 
-use crate::front_of_house::hosting;
+mod serving {
+    fn take_order() {}
 
-pub fn eat_at_restaurant() {
-    hosting::add_to_waitlist();
+    fn serve_order() {}
+
+    fn take_payment() {}
 }
 
