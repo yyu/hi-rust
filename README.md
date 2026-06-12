@@ -384,3 +384,21 @@ ownership, borrow checker
 > `use std::collections::HashMap;`
 >
 > This is an absolute path starting with `std`, the name of the standard library crate.
+
+* vector
+  * create a new empty vector: `let v: Vec<i32> = Vec::new();`
+  * More often, you’ll create a `Vec<T>` with initial values, and Rust will infer the type of value you want to store, so you rarely need to do this type annotation
+  * `vec!` macro example: `let v = vec![1, 2, 3];`
+
+* Rust groups erros into two major categories
+  * recoverable errors
+    * `Result<T, E>`
+    * report and retry
+  * unrecoverable errors
+    * two ways to cause it
+      * taking an action that causes our code to panic (such as accessing an array past the end)
+      * `panic!`
+    * immediate termination
+      * by default, when a panic occurs, the program starts *unwinding*
+      * alternative: *aborting*
+        * `panic = 'abort'` under `[profile.release]` in Cargo.toml
