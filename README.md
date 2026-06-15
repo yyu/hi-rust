@@ -402,3 +402,5 @@ ownership, borrow checker
       * by default, when a panic occurs, the program starts *unwinding*
       * alternative: *aborting*
         * `panic = 'abort'` under `[profile.release]` in Cargo.toml
+
+* It would also be appropriate to call `expect` when you have some other logic that ensures that the `Result` will have an `Ok` value, but the logic isn’t something the compiler understands
