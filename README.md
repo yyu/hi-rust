@@ -403,4 +403,19 @@ ownership, borrow checker
       * alternative: *aborting*
         * `panic = 'abort'` under `[profile.release]` in Cargo.toml
 
-* It would also be appropriate to call `expect` when you have some other logic that ensures that the `Result` will have an `Ok` value, but the logic isn’t something the compiler understands
+> It would also be appropriate to call `expect` when you have some other logic that ensures that the `Result` will have an `Ok` value, but the logic isn’t something the compiler understands
+
+> we can implement a trait on a type only if either the trait or the type, or both, are local to our crate
+
+> it isn’t possible to call the default implementation from an overriding implementation of that same method
+
+* lifetime annotations
+  * Lifetime annotations don’t change how long any of the references live. Rather, they describe the relationships of the lifetimes of multiple references to each other without affecting the lifetimes
+  * The lifetime annotations become part of the contract of the function
+  * input lifetimes, output lifetimes
+    * Lifetimes on function or method parameters are called input lifetimes
+    * lifetimes on return values are called output lifetimes.
+  * lifetime elision rules
+    * The first rule is that the compiler assigns a different lifetime parameter to each lifetime in each input type
+    * The second rule is that, if there is exactly one input lifetime parameter, that lifetime is assigned to all output lifetime parameters
+    * The third rule is that, if there are multiple input lifetime parameters, but one of them is `&self` or `&mut self` because this is a method, the lifetime of self is assigned to all output lifetime parameters
