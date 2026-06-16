@@ -419,3 +419,13 @@ ownership, borrow checker
     * The first rule is that the compiler assigns a different lifetime parameter to each lifetime in each input type
     * The second rule is that, if there is exactly one input lifetime parameter, that lifetime is assigned to all output lifetime parameters
     * The third rule is that, if there are multiple input lifetime parameters, but one of them is `&self` or `&mut self` because this is a method, the lifetime of self is assigned to all output lifetime parameters
+
+* closure
+  * "toilet closure"
+    * `let f = |_| ();`
+    * The toilet closure is similar to `std::mem::drop`, i.e. a function that moves an argument and causes it to be dropped.
+  * `move` keyword
+    * force the closure to take ownership of the values it uses in the environment even though the body of the closure doesn’t strictly need ownership
+    * e.g., `thread::spawn(move || do_something(...))`
+
+
