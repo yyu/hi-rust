@@ -428,4 +428,13 @@ ownership, borrow checker
     * force the closure to take ownership of the values it uses in the environment even though the body of the closure doesn’t strictly need ownership
     * e.g., `thread::spawn(move || do_something(...))`
 
+* iterator
+  * In Rust, iterators are lazy
+  * consuming adapters
+    * Methods that call `next` are called *consuming adapters* because calling them uses up the iterator
+  * Iterator adapters
+    * methods defined on the `Iterator` trait that don’t consume the iterator
 
+
+* WTF
+  * `assert_eq!(v1_iter.next(), Some(&1));` -- what is `&1`?
