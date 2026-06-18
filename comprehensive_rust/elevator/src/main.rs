@@ -3,7 +3,7 @@
 #[derive(Debug)]
 /// An event in the elevator system that the controller must react to.
 enum Event {
-    CarArrived { floor: i32},
+    CarArrive { floor: i32 },
     CarDoorEvent { is_open: bool },
     LobbyCallButtonPressed { floor: i32, dir: Direction },
     CarFloorButtonPressed { floor: i32 },
