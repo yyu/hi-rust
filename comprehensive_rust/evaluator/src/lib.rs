@@ -19,13 +19,13 @@ enum Expression {
 
 fn eval(e: Expression) -> i64 {
     match e {
-        Expression::Value(val) => return val,
+        Expression::Value(val) => val,
         Expression::Op { op, left, right } => {
             match op {
-                Operation::Add => return eval(*left) + eval(*right),
-                Operation::Sub => return eval(*left) - eval(*right),
-                Operation::Mul => return eval(*left) * eval(*right),
-                Operation::Div => return eval(*left) / eval(*right),
+                Operation::Add => eval(*left) + eval(*right),
+                Operation::Sub => eval(*left) - eval(*right),
+                Operation::Mul => eval(*left) * eval(*right),
+                Operation::Div => eval(*left) / eval(*right),
             }
         }
     }
