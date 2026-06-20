@@ -11,7 +11,7 @@ impl Logger for StderrLogger {
     }
 }
 
-struct MsgFilter<F: Fn(u8, &str) -> bool> {
+struct MsgFilter<F> {
     logger: StderrLogger,
     msgfilter: F,
 }
