@@ -11,18 +11,20 @@ impl Logger for StderrLogger {
     }
 }
 
-struct MsgFilter<F> {
-    logger: StderrLogger,
+// it seems we don't have to add constraints to T or F here
+struct MsgFilter<T, F> {
+    logger: T,
     msgfilter: F,
 }
 
-impl<F: Fn(u8, &str) -> bool> MsgFilter<F> {
-    fn new(logger: StderrLogger, msgfilter: F) -> Self {
+// we need constraint for F; remove it and see how compiler will complain
+impl<T, F: Fn(u8, &str) -> bool> MsgFilter<T, F> {
+    fn new(logger: T, msgfilter: F) -> Self {
         MsgFilter{logger, msgfilter}
     }
 }
 
-impl<F: Fn(u8, &str) -> bool> Logger for MsgFilter<F> {
+impl<T: Logger, F: Fn(u8, &str) -> bool> Logger for MsgFilter<T, F> {
     fn log(&self, verbosity: u8, message: &str) {
         if (self.msgfilter)(verbosity, message) {
             self.logger.log(verbosity, message);
