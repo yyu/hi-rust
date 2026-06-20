@@ -12,28 +12,28 @@ impl Logger for StderrLogger {
 }
 
 // it seems we don't have to add constraints to T or F here
-struct MsgFilter<T, F> {
+struct Filter<T, F> {
     logger: T,
-    msgfilter: F,
+    filter: F,
 }
 
 // we need constraint for F; remove it and see how compiler will complain
-impl<T, F: Fn(u8, &str) -> bool> MsgFilter<T, F> {
-    fn new(logger: T, msgfilter: F) -> Self {
-        MsgFilter{logger, msgfilter}
+impl<T, F: Fn(u8, &str) -> bool> Filter<T, F> {
+    fn new(logger: T, filter: F) -> Self {
+        Filter{logger, filter}
     }
 }
 
-impl<T: Logger, F: Fn(u8, &str) -> bool> Logger for MsgFilter<T, F> {
+impl<T: Logger, F: Fn(u8, &str) -> bool> Logger for Filter<T, F> {
     fn log(&self, verbosity: u8, message: &str) {
-        if (self.msgfilter)(verbosity, message) {
+        if (self.filter)(verbosity, message) {
             self.logger.log(verbosity, message);
         }
     }
 }
 
 fn main() {
-    let logger = MsgFilter::new(StderrLogger, |_verbosity, msg| msg.contains("yikes"));
+    let logger = Filter::new(StderrLogger, |_verbosity, msg| msg.contains("yikes"));
     logger.log(5, "FYI");
     logger.log(1, "yikes, something went wrong");
     logger.log(2, "uhoh");
