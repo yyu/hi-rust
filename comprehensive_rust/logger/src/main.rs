@@ -20,7 +20,7 @@ struct Filter<T, F> {
 // we need constraint for F; remove it and see how compiler will complain
 impl<T, F: Fn(u8, &str) -> bool> Filter<T, F> {
     fn new(logger: T, filter: F) -> Self {
-        Filter{logger, filter}
+        Self{logger, filter}
     }
 }
 
