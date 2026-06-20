@@ -37,7 +37,50 @@ impl<T: Ord> BinaryTree<T> {
 }
 
 // Implement `new` for `Node`.
+impl<T: Ord> Node<T> {
+    fn new(val: T) -> Self {
+        Self {
+            value: val,
+            left: Subtree::new(),
+            right: Subtree::new(),
+        }
+    }
+}
+
+
 // Implement `new`, `insert`, `len`, and `has` for `Subtree`.
+impl<T: Ord> Subtree<T> {
+    fn new() -> Self {
+        Self(None)
+    }
+
+    fn insert(&mut self, val: T) {
+        match &mut self.0 {
+            Some(n) => {
+                if val < n.value {
+                    n.left.insert(val);
+                } else if val > n.value {
+                    n.right.insert(val);
+                }
+            },
+            None => self.0 = Some(Box::new(Node::new(val))),
+        }
+    }
+
+    fn len(&self) -> usize {
+        match &self.0 {
+            Some(n) => n.left.len() + 1 + n.right.len(),
+            None => 0,
+        }
+    }
+
+    fn has(&self, val: &T) -> bool {
+        match &self.0 {
+            Some(n) => n.value == *val || n.left.has(val) || n.right.has(val),
+            None => false,
+        }
+    }
+}
 
 #[cfg(test)]
 mod tests {
