@@ -409,6 +409,8 @@ ownership, borrow checker
 
 > it isn’t possible to call the default implementation from an overriding implementation of that same method
 
+> Rust needs to know at compile time how much space a type takes up.
+
 * lifetime annotations
   * Lifetime annotations don’t change how long any of the references live. Rather, they describe the relationships of the lifetimes of multiple references to each other without affecting the lifetimes
   * The lifetime annotations become part of the contract of the function
@@ -435,6 +437,15 @@ ownership, borrow checker
   * Iterator adapters
     * methods defined on the `Iterator` trait that don’t consume the iterator
 
+* smart pointers
+  * While references only borrow data, in many cases smart pointers own the data they point to
+  * smart pointers implement the `Deref` and `Drop` traits.
+    * The `Deref` trait allows an instance of the smart pointer struct to behave like a reference so that you can write your code to work with either references or smart pointers
+    * The `Drop` trait allows you to customize the code that’s run when an instance of the smart pointer goes out of scope
+  * `Box<T>`
+    * Boxes allow you to store data on the heap rather than the stack.
+    * What remains on the stack is the pointer to the heap data
+    * can be useful in cases like the cons list where the indirection is the only feature we need
 
 * WTF
   * `assert_eq!(v1_iter.next(), Some(&1));` -- what is `&1`?
