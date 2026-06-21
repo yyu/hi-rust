@@ -446,6 +446,16 @@ ownership, borrow checker
     * Boxes allow you to store data on the heap rather than the stack.
     * What remains on the stack is the pointer to the heap data
     * can be useful in cases like the cons list where the indirection is the only feature we need
+  * Rust substitutes the `*` operator with a call to the `deref` method and then a plain dereference
+    * `*y` becomes `*(y.deref())`
+  * *Deref coercion* converts a reference to a type that implements the `Deref` trait into a reference to another type
+    * example: deref coercion can convert `&String` to `&str` because `String` implements the `Deref` trait such that it returns `&str`
+    * When the `Deref` trait is defined for the types involved, Rust will analyze the types and use `Deref::deref` as many times as necessary to get a reference to match the parameter’s type.
+      * The number of times that `Deref::deref` needs to be inserted is resolved at compile time
+  * Rust does deref coercion when it finds types and trait implementations in three cases:
+    * From `&T` to `&U` when `T: Deref<Target=U>`
+    * From `&mut T` to `&mut U` when `T: DerefMut<Target=U>`
+    * From `&mut T` to `&U` when `T: Deref<Target=U>`
 
 * WTF
   * `assert_eq!(v1_iter.next(), Some(&1));` -- what is `&1`?
