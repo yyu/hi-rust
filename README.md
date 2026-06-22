@@ -456,6 +456,29 @@ ownership, borrow checker
     * From `&T` to `&U` when `T: Deref<Target=U>`
     * From `&mut T` to `&mut U` when `T: DerefMut<Target=U>`
     * From `&mut T` to `&U` when `T: Deref<Target=U>`
+  * `Rc<T>`
+    * allows to share data between multiple parts of your program for *reading only*
+    * `Rc::clone(&a)` vs `a.clone()`
+      * The implementation of `Rc::clone` doesn’t make a deep copy of all the data like most types’ implementations of `clone` do
+      * The call to `Rc::clone` only increments the reference count
+      * By using `Rc::clone` for reference counting, we can visually distinguish between the deep-copy kinds of clones and the kinds of clones that increase the reference count
+    * for use in single-threaded scenarios
+  * *Interior mutability*
+    * Interior mutability is a design pattern in Rust that allows you to mutate data even when there are immutable references to that data
+    * We can use types that use the interior mutability pattern only when we can ensure that the borrowing rules will be followed at runtime, even though the compiler can’t guarantee that
+  * `RefCell<T>`
+    * represents single ownership over the data it holds
+    * the borrowing rules’ invariants are enforced *at runtime* instead of at compile time like `Box<T>`
+      * if you violate the rules, you’ll get a `panic!` instead of a compiler error
+    * useful when you’re sure your code follows the borrowing rules but the compiler is unable to understand and guarantee that
+    * for use in single-threaded scenarios
+    * you can mutate the value inside the `RefCell<T>` even when the `RefCell<T>` is immutable
+    * `borrow` method returns the smart pointer type `Ref<T>`, and `borrow_mut` returns the smart pointer type `RefMut<T>`.
+      * Both types implement `Deref`, so we can treat them like regular references.
+
+
+
+> Unsafe code indicates to the compiler that we’re checking the rules manually instead of relying on the compiler to check them for us
 
 * WTF
   * `assert_eq!(v1_iter.next(), Some(&1));` -- what is `&1`?
