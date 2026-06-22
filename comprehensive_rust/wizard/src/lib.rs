@@ -38,26 +38,37 @@ impl Wizard {
     // If the spell has no uses left, it is removed from the inventory.
     fn cast_spell(&mut self, name: &str) {
         let mut idx = None;
+
         for (i, spell) in self.spells.iter_mut().enumerate() {
             if spell.name == name {
-                println!("\x1b[37mfound spell: {:?}\x1b[0m", spell);
-                if self.mana < spell.cost {
-                    println!("\x1b[37mnot enough mana {} in {}\x1b[0m", self.mana, spell.cost);
-                    return;
-                }
-                if spell.uses < 1 {
-                    println!("\x1b[37mno uses left: {}\x1b[0m", spell.uses);
-                    return;
-                }
-                self.mana -= spell.cost;
-                spell.uses -= 1;
-                if spell.uses == 0 {
-                    println!("\x1b[37mwill remove spell {:?}\x1b[0m", spell);
-                    idx = Some(i);
-                }
+                idx = Some(i);
+                break;
             }
         }
-        if let Some(i) = idx {
+
+        let Some(i) = idx else {
+            println!("\x1b[37mspell not found: {name}\x1b[0m");
+            return;
+        };
+
+        let spell = &mut self.spells[i];
+        println!("\x1b[37mfound spell: {:?}\x1b[0m", spell);
+
+        if self.mana < spell.cost {
+            println!("\x1b[37mnot enough mana {} in {}\x1b[0m", self.mana, spell.cost);
+            return;
+        }
+
+        if spell.uses < 1 {
+            println!("\x1b[37mno uses left: {}\x1b[0m", spell.uses);
+            return;
+        }
+
+        self.mana -= spell.cost;
+
+        spell.uses -= 1;
+        if spell.uses == 0 {
+            println!("\x1b[37mremoving spell {:?}\x1b[0m", spell);
             self.spells.remove(i);
         }
     }
