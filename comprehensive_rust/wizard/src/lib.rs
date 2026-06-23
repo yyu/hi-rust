@@ -65,8 +65,10 @@ impl Wizard {
         }
 
         self.mana -= spell.cost;
-
         spell.uses -= 1;
+
+        println!("casting spell {:?}", spell);
+
         if spell.uses == 0 {
             println!("\x1b[37mremoving spell {:?}\x1b[0m", spell);
             self.spells.remove(i);
