@@ -37,4 +37,32 @@ mod test {
         assert!(!luhn("4539 3195 0343 6476"));
         assert!(!luhn("8273 1232 7352 0569"));
     }
+
+    #[test]
+    fn test_empty() {
+        assert!(!luhn(""));
+    }
+
+    #[test]
+    fn test_too_short() {
+        assert!(!luhn("1"));
+    }
+
+    #[test]
+    fn test_shortest() {
+        assert!(luhn("34"));
+    }
+
+    #[test]
+    fn test_non_digit_letters() {
+        assert!(!luhn("a"));
+        assert!(!luhn("a2"));
+        assert!(!luhn("1a"));
+        assert!(!luhn("1ab"));
+        assert!(!luhn("1a2"));
+        assert!(!luhn("a "));
+        assert!(!luhn("a."));
+        assert!(!luhn("3."));
+        assert!(!luhn("3.14"));
+    }
 }
