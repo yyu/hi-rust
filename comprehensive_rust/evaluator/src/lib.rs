@@ -23,12 +23,12 @@ enum Expression {
 struct DivideByZeroError;
 
 fn eval(e: Expression) -> Result<i64, DivideByZeroError> {
-    match e {
-        Expression::Value(val) => Ok(val),
+    Ok(match e {
+        Expression::Value(val) => val,
         Expression::Op { op, left, right } => {
             let left = eval(*left)?;
             let right = eval(*right)?;
-            Ok(match op {
+            match op {
                 Operation::Add => left + right,
                 Operation::Sub => left - right,
                 Operation::Mul => left * right,
@@ -37,9 +37,9 @@ fn eval(e: Expression) -> Result<i64, DivideByZeroError> {
                 } else {
                     return Err(DivideByZeroError);
                 }
-            })
+            }
         }
-    }
+    })
 }
 
 #[test]
