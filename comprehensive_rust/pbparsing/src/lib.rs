@@ -110,14 +110,8 @@ fn parse_field(data: &[u8]) -> (Field<'_>, &[u8]) {
             (FieldValue::Varint(varint_value), remainder)
         },
         WireType::Len => {
-            if remainder.len() < 1 {
-                panic!("Not enough bytes.");
-            }
-            let n = remainder[0] as usize;
-            let remainder = &remainder[1..];
-            if remainder.len() < n {
-                panic!("Not enough bytes.");
-            }
+            let (n, remainder) = parse_varint(remainder);
+            let n = n as usize;
             let (len_value, remainder) = remainder.split_at(n);
             (FieldValue::Len(len_value), remainder)
         },
