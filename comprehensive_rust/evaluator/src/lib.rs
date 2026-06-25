@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 /// An operation to perform on two subexpressions.
 #[derive(Debug)]
 enum Operation {
@@ -21,11 +23,13 @@ fn eval(e: Expression) -> i64 {
     match e {
         Expression::Value(val) => val,
         Expression::Op { op, left, right } => {
+            let left = eval(*left);
+            let right = eval(*right);
             match op {
-                Operation::Add => eval(*left) + eval(*right),
-                Operation::Sub => eval(*left) - eval(*right),
-                Operation::Mul => eval(*left) * eval(*right),
-                Operation::Div => eval(*left) / eval(*right),
+                Operation::Add => left + right,
+                Operation::Sub => left - right,
+                Operation::Mul => left * right,
+                Operation::Div => left / right,
             }
         }
     }
