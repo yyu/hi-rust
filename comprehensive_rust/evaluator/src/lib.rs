@@ -124,3 +124,15 @@ fn test_div() {
         Ok(5)
     )
 }
+
+#[test]
+fn test_div_by_zero() {
+    assert_eq!(
+        eval(Expression::Op {
+            op: Operation::Div,
+            left: Box::new(Expression::Value(1)),
+            right: Box::new(Expression::Value(0)),
+        }),
+        Err(DivideByZeroError)
+    )
+}
