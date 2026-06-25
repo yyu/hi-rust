@@ -28,16 +28,16 @@ fn eval(e: Expression) -> Result<i64, DivideByZeroError> {
         Expression::Op { op, left, right } => {
             let left = eval(*left)?;
             let right = eval(*right)?;
-            match op {
-                Operation::Add => Ok(left + right),
-                Operation::Sub => Ok(left - right),
-                Operation::Mul => Ok(left * right),
+            Ok(match op {
+                Operation::Add => left + right,
+                Operation::Sub => left - right,
+                Operation::Mul => left * right,
                 Operation::Div => if right != 0 {
-                    Ok(left / right)
+                    left / right
                 } else {
-                    Err(DivideByZeroError)
+                    return Err(DivideByZeroError);
                 }
-            }
+            })
         }
     }
 }
