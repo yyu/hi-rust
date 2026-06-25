@@ -1,9 +1,18 @@
+#![allow(dead_code)]
+
 /// Calculate the differences between elements of `values` offset by `offset`,
 /// wrapping around from the end of `values` to the beginning.
 ///
 /// Element `n` of the result is `values[(n+offset)%len] - values[n]`.
 fn offset_differences(offset: usize, values: Vec<i32>) -> Vec<i32> {
-    todo!()
+    if values.is_empty() {
+        return values;
+    }
+    let offset = offset % values.len();
+    let it = values.iter();
+    let mut it2 = values.iter().cycle().skip(offset);
+
+    it.map(|n| it2.next().unwrap() - n).collect()
 }
 
 #[test]
