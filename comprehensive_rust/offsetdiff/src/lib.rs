@@ -10,9 +10,9 @@ fn offset_differences(offset: usize, values: Vec<i32>) -> Vec<i32> {
     }
     let offset = offset % values.len();
     let it = values.iter();
-    let mut it2 = values.iter().cycle().skip(offset);
+    let it2 = values.iter().cycle().skip(offset);
 
-    it.map(|n| it2.next().unwrap() - n).collect()
+    it.zip(it2).map(|(x, y)| y - x).collect()
 }
 
 #[test]
