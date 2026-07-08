@@ -150,5 +150,26 @@ mod tests {
         crate::learn::__________();
         super::__________2();
     }
+
+    #[test]
+    fn test_create_read_delete_file() {
+        let data = "The quick brown fox jumps over the lazy dog.\n";
+
+        // use a special filename so that we don't accidentally mess up an existing file
+        let filename = "0c1e0cfa-55b3-408a-95bb-2f07c375460c.txt";
+
+        // make sure the file doesn't exist already
+        assert!(!std::path::Path::new(filename).exists());
+
+        // create and write something
+        assert!(std::fs::write(filename, data).is_ok());
+
+        // read file into a string and verify
+        let content = std::fs::read_to_string(filename).unwrap();
+        assert_eq!(data, content);
+
+        // remove the file
+        assert!(std::fs::remove_file(filename).is_ok());
+    }
 }
 
