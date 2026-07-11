@@ -476,6 +476,14 @@ ownership, borrow checker
     * `borrow` method returns the smart pointer type `Ref<T>`, and `borrow_mut` returns the smart pointer type `RefMut<T>`.
       * Both types implement `Deref`, so we can treat them like regular references.
 
+* `Pin`
+  * `Pin` is a wrapper for pointer-like types such as &, &mut, Box, and Rc.
+  * `Pin` is not a pointer itself and doesn’t have any behavior of its own like `Rc` and `Arc` do with reference counting;
+  * it’s purely a tool the compiler can use to enforce constraints on pointer usage.
+
+* Trait object
+  * `Box<dyn Draw>` is a trait object; it’s a stand-in for any type inside a `Box` that implements the `Draw` trait.
+  * In general, it is good to be aware that using trait objects can cause a worse developer experience for API clients in the case of type inference.
 
 
 > Unsafe code indicates to the compiler that we’re checking the rules manually instead of relying on the compiler to check them for us
