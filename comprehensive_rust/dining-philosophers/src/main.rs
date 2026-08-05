@@ -46,8 +46,6 @@ fn main() {
     // Create philosophers
 
     // Make each of them think and eat 100 times
-    let mut handles = Vec::new();
-
     for i in 0..PHILOSOPHERS.len() {
         let mut l = i % N;
         let mut r = (i + 1) % N;
@@ -61,12 +59,12 @@ fn main() {
             right_chopstick: chopsticks[r].clone(),
             thoughts: tx.clone(),
         };
-        handles.push(thread::spawn(move || {
+        thread::spawn(move || {
             for _ in 0..100 {
                 p.think();
                 p.eat();
             }
-        }));
+        });
     }
 
     drop(tx);
@@ -75,6 +73,5 @@ fn main() {
     for msg in rx {
         println!("{}", msg);
     }
-    handles.into_iter().for_each(|h| h.join().unwrap());
     println!("done");
 }
