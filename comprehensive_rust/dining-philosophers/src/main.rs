@@ -2,7 +2,7 @@ use std::sync::{Arc, Mutex, mpsc};
 use std::thread;
 use std::time::Duration;
 
-struct Chopstick;
+struct Chopstick(i32);
 
 struct Philosopher {
     name: String,
@@ -20,10 +20,15 @@ impl Philosopher {
 
     fn eat(&self) {
         // Pick up chopsticks...
-        let _l = self.left_chopstick.lock().unwrap();
-        let _r = self.right_chopstick.lock().unwrap();
+        let l = self.left_chopstick.lock().unwrap();
+        println!("-------------------------------------------------- {} picked up {}", self.name, l.0);
+        let r = self.right_chopstick.lock().unwrap();
+        println!("-------------------------------------------------- {} picked up {}", self.name, r.0);
         println!("{} is eating...", self.name);
         thread::sleep(Duration::from_millis(10));
+
+        println!("-------------------------------------------------- {} puts down {}", self.name, l.0);
+        println!("-------------------------------------------------- {} puts down {}", self.name, r.0);
     }
 }
 
@@ -34,7 +39,7 @@ static N: usize = PHILOSOPHERS.len();
 
 fn main() {
     // Create chopsticks
-    let chopsticks = PHILOSOPHERS.iter().map(|_| Arc::new(Mutex::new(Chopstick))).collect::<Vec<_>>();
+    let chopsticks = PHILOSOPHERS.iter().enumerate().map(|(i, _)| Arc::new(Mutex::new(Chopstick(i as i32)))).collect::<Vec<_>>();
 
     let (tx, rx) = mpsc::channel();
 
@@ -57,12 +62,14 @@ fn main() {
             thoughts: tx.clone(),
         };
         handles.push(thread::spawn(move || {
-            for _ in 0..1 {
+            for _ in 0..100 {
                 p.think();
                 p.eat();
             }
         }));
     }
+
+    drop(tx);
 
     // Output their thoughts
     for msg in rx {
